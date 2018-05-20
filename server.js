@@ -21,7 +21,24 @@ app.get('/organizations', (req, res) => {
         const filtered = orgs.filter(o => o.county.toLowerCase() === county.toLowerCase());
         return res.status(200).json(filtered);
     }
-    return res.status(406).json({ error: '1', message: 'County was not given.' })
+    return res.status(406).json(
+        {
+            code: '1',
+            type: 'error',
+            message: 'County was not given.'
+        }
+    )
+})
+
+app.post('/register', (req, res) => {
+    if (!req.body) return res.status(406).json(
+        {
+            code: '2',
+            type: 'error',
+            message: 'No body given'
+        }
+    
+    )
 })
 
 app.listen(3000);
