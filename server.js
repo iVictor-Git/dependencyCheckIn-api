@@ -37,8 +37,37 @@ app.post('/register', (req, res) => {
             type: 'error',
             message: 'No body given'
         }
-    
-    )
+    );
+    const user = {
+        first: req.body.parentFirstName,
+        last: req.body.parentLastName,
+        phone: req.body.parentPhoneNumber,
+        sendSMS: req.body.sendSMS,
+        address: {
+            street: req.body.parentAddr1,
+            street2: req.body.parentAddr2,
+            city: req.body.parentAddrCity,
+            state: req.body.parentAddrState,
+            zip: req.body.parentAddrZip
+        },
+        oldestChild: {
+            name: req.body.ChName
+        },
+        username: req.body.userName,
+        password: req.body.Password
+    };
+
+    // validation
+    if (isValid) {
+        return res.status(200).json(user);
+    }
+    return res.status(400).json(
+        {
+            code: '3',
+            type: 'error',
+            message: 'User creation - Invalid'
+        }
+    );
 })
 
 app.listen(3000);
