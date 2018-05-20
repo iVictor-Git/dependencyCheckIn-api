@@ -27,4 +27,4 @@ const orgs = [
     }
 ]
 
-export default orgs;
+module.exports = { orgs }
