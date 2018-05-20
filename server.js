@@ -4,10 +4,14 @@ const app = express()
 
 app.use(bodyParser.json())
 
-app.get('/', function (req, res) {
+app.get('/', (req, res) => {
     res.status(200).json({
         message: 'Hello World'
     })
+})
+
+app.get('/organizations', (req, res) => {
+    
 })
 
 app.listen(3000)
